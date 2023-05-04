@@ -11,6 +11,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: production
     env:
       DOCKER_IMAGE_NAME: yuque_hook
       DOCKER_IMAGE_TAG: ${{ github.sha }}
