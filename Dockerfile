@@ -3,6 +3,8 @@
 # 第一阶段：安装依赖
 FROM node:16-alpine AS dependencies
 
+RUN npm install -g pnpm
+
 # 设置工作目录
 WORKDIR /usr/src/app
 
