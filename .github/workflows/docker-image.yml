@@ -37,4 +37,5 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_REPOSITORY }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
             docker tag ${{ secrets.DOCKER_REPOSITORY }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }} ${{ env.DOCKER_IMAGE_NAME }}:latest
+            cd ${{ vars.DEVOPS_DOCKER_WORKSPACE }}
             docker-compose up -d --force-recreate --build ${{ env.DOCKER_IMAGE_NAME }}
