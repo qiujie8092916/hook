@@ -12,8 +12,6 @@ RUN npm install && npm run build
 COPY . .
 
 FROM node:16-alpine
-LABEL Name="one-piece-bi-service"
-LABEL Version = '1.0.0'
 
 ENV NODE_ENV production
 

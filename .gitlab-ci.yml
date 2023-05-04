@@ -1,7 +1,7 @@
 stages:
   - build
 
-bi-service:
+yuque-hook:
   stage: build
   script:
     - '/usr/bin/env bash $CI_BUILDS_DIR/ci/build.sh'
