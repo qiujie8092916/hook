@@ -24,7 +24,7 @@ async function bootstrap() {
   // 开启cookies解析
   app.use(cookieParser());
 
-  const port = process.env.PORT;
+  const port = process.env.PORT || 8080;
   if (!port) {
     throw new Error('请设置环境变量`PORT`');
   }
