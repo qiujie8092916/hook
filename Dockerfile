@@ -35,7 +35,7 @@ WORKDIR /usr/src/app
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo 'Asia/Shanghai' > /etc/timezone
 
-COPY --from=dependencies /usr/src/app/package.json /usr/src/app/yarn.lock ./
+COPY --from=dependencies /usr/src/app/package.json /usr/src/app/pnpm-lock.yaml ./
 
 ENV NODE_ENV "production"
 
