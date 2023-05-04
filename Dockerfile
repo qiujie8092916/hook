@@ -17,6 +17,8 @@ RUN pnpm config set registry https://registry.npmjs.org/ && \
 # 第二阶段：构建阶段
 FROM dependencies AS builder
 
+RUN npm install -g pnpm@7.28.0
+
 # 设置工作目录
 WORKDIR /usr/src/app
 
@@ -27,6 +29,8 @@ RUN pnpm run build
 
 # 第三阶段：最终镜像
 FROM node:16-alpine AS runner
+
+RUN npm install -g pnpm@7.28.0
 
 # 设置当前工作目录
 WORKDIR /usr/src/app
