@@ -36,5 +36,5 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             docker pull ${{ secrets.DOCKER_REPOSITORY }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
-            docker tag ${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }} ${{ env.DOCKER_IMAGE_NAME }}:latest
+            docker tag ${{ secrets.DOCKER_REPOSITORY }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }} ${{ env.DOCKER_IMAGE_NAME }}:latest
             docker-compose up -d --force-recreate --build ${{ env.DOCKER_IMAGE_NAME }}
