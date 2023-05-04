@@ -48,7 +48,7 @@ RUN pnpm config set registry https://registry.npmjs.org/ && \
     pnpm install --frozen-lockfile --production
 
 # 清除缓存
-RUN pnpm cache clean --force
+# RUN pnpm cache clean --force
 
 # 若有额外需要操作内容，请自行添加在此
 
