@@ -1,8 +1,16 @@
+/*
+ * @Author: jie.q qiujieee_empty@outlook.com
+ * @Date: 2023-05-05 10:22:36
+ * @LastEditors: jie.q qiujieee_empty@outlook.com
+ * @LastEditTime: 2023-05-05 10:35:26
+ * @FilePath: /yuque_hook/src/core/core.module.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from './../config/configuration';
-import { IndexController } from './controllers';
+import { HookController, IndexController } from './controllers';
 import { HttpLoggerMiddleware } from './middleware';
 import { BootstrapService } from './services';
 @Module({
@@ -33,7 +41,7 @@ import { BootstrapService } from './services';
     //   inject: [ConfigService],
     // }),
   ],
-  controllers: [IndexController],
+  controllers: [IndexController, HookController],
   providers: [BootstrapService],
   exports: [BootstrapService],
 })
