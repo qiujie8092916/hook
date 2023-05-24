@@ -1,14 +1,13 @@
 import { Controller, Post, Body, Logger } from '@nestjs/common';
 import { ApiExcludeController } from '@nestjs/swagger';
 
-@Controller('/midjourney')
+@Controller('/yuque')
 @ApiExcludeController()
-export class MidjourneyController {
-  private readonly logger = new Logger(MidjourneyController.name);
+export class YuqueController {
+  private readonly logger = new Logger(YuqueController.name);
 
-  @Post('hook')
-  hook(@Body() payload) {
+  @Post('/hook')
+  index(@Body() payload) {
     this.logger.log(JSON.stringify(payload));
-    return true;
   }
 }

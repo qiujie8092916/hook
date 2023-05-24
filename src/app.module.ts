@@ -4,12 +4,13 @@ import { HealthModule } from './health/health.module';
 import { MetricsModule } from './metrics/metrics.module';
 import { CoreModule } from './core/core.module';
 import { MidjourneyModule } from './modules/midjourney/index.module';
+import { YuqueModule } from './modules/yuque/index.module';
 import { CommonModule } from './common/common.module';
 import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { HttpExceptionFilter } from './core/exceptions';
 
 @Module({
-  imports: [MidjourneyModule, CoreModule, HealthModule, MetricsModule, CommonModule, PlatformModule],
+  imports: [CoreModule, HealthModule, MetricsModule, CommonModule, PlatformModule, YuqueModule, MidjourneyModule],
   controllers: [],
   providers: [
     {

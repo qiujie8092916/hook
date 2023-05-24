@@ -1,9 +1,7 @@
 # 执行顺序是加速构建速度的**关键中的关键**
 
 # 第一阶段：安装依赖
-FROM node:16-alpine AS dependencies
-
-RUN npm install -g pnpm@7.28.0
+FROM stefanwin/node-alpine-pnpm AS dependencies
 
 # 设置工作目录
 WORKDIR /usr/src/app
@@ -17,8 +15,6 @@ RUN pnpm config set registry https://registry.npmjs.org/ && \
 # 第二阶段：构建阶段
 FROM dependencies AS builder
 
-RUN npm install -g pnpm@7.28.0
-
 # 设置工作目录
 WORKDIR /usr/src/app
 
@@ -28,9 +24,7 @@ COPY . .
 RUN pnpm run build
 
 # 第三阶段：最终镜像
-FROM node:16-alpine AS runner
-
-RUN npm install -g pnpm@7.28.0
+FROM stefanwin/node-alpine-pnpm AS runner
 
 # 设置当前工作目录
 WORKDIR /usr/src/app
@@ -46,11 +40,6 @@ ENV NODE_ENV "production"
 # 安装生产依赖
 RUN pnpm config set registry https://registry.npmjs.org/ && \
     pnpm install --frozen-lockfile --production
-
-# 清除缓存
-# RUN pnpm cache clean --force
-
-# 若有额外需要操作内容，请自行添加在此
 
 # 拷贝构建的应用程序
 COPY --from=builder /usr/src/app/dist/ ./dist/
